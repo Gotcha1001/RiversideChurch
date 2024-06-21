@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the navbar */
+.navbar {
+  background: linear-gradient(90deg, #000000, #434343); /* Black to dark gray gradient */
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.navbar-title a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-title a:hover {
+  color: #cccccc; /* Lighter gray for hover */
+}
+
+.navbar-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #cccccc; /* Lighter gray for hover */
+}
+
+.upload-link {
+  background-color: #555555; /* Dark gray for the button */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.upload-link:hover {
+  background-color: #777777; /* Lighter gray for hover */
+}
+
+.dropdown-link {
+  text-decoration: none;
+  text-align: center;
+}
+
+.dropdown-link:hover {
+  background-color: #555555; /* Dark gray for hover */
+}
+
+.prayer-requests-list {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+}
+
+.prayer-request-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.prayer-request-item:last-child {
+  border-bottom: none;
+}
+
+.prayer-request-item h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prayer-request-item p {
+  margin: 0.5rem 0;
+}
+
+.prayer-request-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/*media query for nav bar  */
+/* Add this to your existing CSS file or style block */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .navbar-title {
+    margin-bottom: 10px; /* Add space below the title */
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-links li {
+    margin: 5px 0; /* Add space between each link */
+  }
+
+  .navbar-links a {
+    font-size: 1.2rem; /* Increase font size for better readability */
+  }
+
+  .upload-link {
+    margin-top: 10px; /* Add space above the upload button */
+  }
+
+  .navbar-toggle {
+    display: block; /* Show toggle button on small screens */
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: auto; /* Align toggle button to the right */
+  }
+
+  .dropdown-menu {
+    position: static; /* Reset position for dropdown menu */
+    display: none; /* Hide dropdown menu by default */
+    margin-top: 10px; /* Add space between dropdown and link */
+  }
+
+  .dropdown-link:hover {
+    background-color: transparent; /* Remove background color on hover */
+  }
+
+  .navbar-links.show {
+    display: flex; /* Show navbar links when .show class is added */
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+
+
+/* Add this to your existing CSS file or style block */
+.absolute {
+  position: absolute;
+  z-index: 10; /* Ensure this value is higher than other elements on the page */
+}
+
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-content {
+  margin-bottom: 1rem; /* Adjust as needed */
+}
+
+
+
+@keyframes wobble {
+  0% { transform: translateX(0%); }
+  15% { transform: translateX(-25%) rotate(-5deg); }
+  30% { transform: translateX(20%) rotate(3deg); }
+  45% { transform: translateX(-15%) rotate(-3deg); }
+  60% { transform: translateX(10%) rotate(2deg); }
+  75% { transform: translateX(-5%) rotate(-1deg); }
+  100% { transform: translateX(0%); }
+}
+
+.wobble {
+  animation: wobble 1s ease infinite;
+}
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.zoom {
+  animation: zoom 1.5s ease infinite; /* Slower zoom animation */
+}
+
+.card-content {
+  transition: transform 0.5s ease; /* Slower transition */
+}
+
+.card-content:hover {
+  transform: scale(1.05);
+  animation: zoom 1.5s ease infinite; /* Slower zoom animation on hover */
+}
+
+
+
+.daily-post-item {
+  transition: transform 0.5s ease; /* Smooth transition for zoom effect */
+}
+
+.daily-post-item:hover {
+  animation: zoom 2.5s ease infinite; /* Apply zoom animation on hover */
+}
+
+.daily-post-item img:hover {
+  animation: wobble 25s ease infinite; /* Apply wobble animation on image hover */
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+
+.prayer-request-item {
+  transition: transform 0.5s ease; /* Smooth transition for zoom effect */
+}
+
+.prayer-request-item:hover {
+  animation: zoom 1.5s ease infinite; /* Apply zoom animation on hover */
+}
+
+.prayer-request-item img:hover {
+  animation: wobble 25s ease infinite; /* Apply wobble animation on image hover */
+}
+
+.object-contain {
+  object-fit: contain;
+}
