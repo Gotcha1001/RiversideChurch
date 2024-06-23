@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../utils/firebase';
 import { collection, query, getDocs, doc, updateDoc } from 'firebase/firestore';
+import Image from 'next/image'; // Import Image component from Next.js
 
 export default function DailyPost() {
   const [posts, setPosts] = useState([]);
@@ -63,10 +64,12 @@ export default function DailyPost() {
             >
               <p className="text-2xl font-bold mb-2">Date Posted: {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
               {post.imgUrl && (
-                <div className="w-full h-96 mb-4 rounded overflow-hidden"> {/* Changed height to h-96 */}
-                  <img src={post.imgUrl} alt="Post Image" className="object-contain w-full h-full transition transform hover:wobble" />
-                </div>
-              )}
+  <div className="w-full h-96 mb-4 rounded overflow-hidden flex justify-center items-center"> {/* Added flex and justify-center items-center */}
+    <Image src={post.imgUrl} alt="Post Image" width={500} height={300} objectFit="cover" className="transition transform hover:wobble" />
+  </div>
+)}
+
+
               <p className="text-gray-700 mb-4">Content: {post.content}</p>
               <p className="text-gray-500 text-sm mb-2">Posted by: {post.postedBy}</p>
               <div className="flex items-center">

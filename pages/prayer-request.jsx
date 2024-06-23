@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../utils/firebase';
+import Image from 'next/image'; // Import Image component from Next.js
 
 const PrayerRequests = () => {
   const [prayerRequests, setPrayerRequests] = useState([]);
@@ -26,8 +27,21 @@ const PrayerRequests = () => {
             <h2 className="text-2xl font-bold mb-2">{request.title}</h2>
             <p className="text-gray-700 mb-4">{request.content}</p>
             {request.picUrl && (
-              <div className="w-full h-96 mb-4 rounded overflow-hidden">
-                <img src={request.picUrl} alt={request.title} className="object-contain w-full h-full transition transform hover:scale-110" />
+              <div className="w-full h-80 mb-4 rounded overflow-hidden"> {/* Adjusted height to h-80 */}
+                <Image
+                  src={request.picUrl}
+                  alt={request.title}
+                  width={300} // Adjust width as needed
+                  height={200} // Adjust height as needed
+                  objectFit="contain" // Changed objectFit to contain
+                  className="object-contain w-full h-full transition transform hover:scale-110"
+                  style={{
+                    '@media (min-width: 1024px)': {
+                      width: '600px',
+                      height: '400px',
+                    },
+                  }}
+                />
               </div>
             )}
             <p className="text-gray-500 text-sm mb-2">Submitted by: {request.userName}</p>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
+import Image from 'next/image'; // Import Image component from Next.js
 
 export default function UpdatePrayerRequests() {
   const [prayerRequests, setPrayerRequests] = useState([]);
@@ -99,16 +100,17 @@ export default function UpdatePrayerRequests() {
               <h2 className="text-xl font-bold">{request.title}</h2>
               <p className="text-gray-700">{request.content}</p>
               {request.picUrl && (
-                <div className="w-full h-full mt-4 rounded overflow-hidden">
-                <img
-                  src={request.picUrl}
-                  alt={request.title}
-                  className="object-cover w-full h-full"
-                  style={{ aspectRatio: "16/9" }}
-                />
-              </div>
-              
-              )}
+  <div className="w-full h-80 mt-4 flex items-center justify-center">
+    <Image
+      src={request.picUrl}
+      alt={request.title}
+      width={300} // Adjust the width as needed
+      height={200} // Adjust the height as needed
+      objectFit="cover"
+    />
+  </div>
+)}
+
               <p className="text-gray-500 text-sm mt-2">Submitted by: {request.userName}</p>
               <p className="text-gray-500 text-sm">Date: {new Date(request.date).toLocaleString()}</p>
               <div className="flex space-x-4 mt-4">

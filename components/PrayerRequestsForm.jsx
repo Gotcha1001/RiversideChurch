@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db, auth } from '../utils/firebase';
 import { addDoc, collection } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import Image from 'next/image'; // Import Image component from Next.js
 
 const PrayerRequestForm = ({ onRequestAdded, onCancel }) => {
   const [title, setTitle] = useState('');
@@ -84,6 +85,11 @@ const PrayerRequestForm = ({ onRequestAdded, onCancel }) => {
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
+      {picUrl && (
+        <div className="mb-4">
+          <Image src={picUrl} alt="Prayer Request Image" width={400} height={300} />
+        </div>
+      )}
       <div className="flex justify-between">
         <button
           type="button"

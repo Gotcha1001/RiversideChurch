@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../utils/firebase';
 import { collection, query, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import Image from 'next/image'; // Import Image component from Next.js
 
 export default function UpdateDailyPost() {
   const [posts, setPosts] = useState([]);
@@ -76,10 +77,11 @@ export default function UpdateDailyPost() {
               <p className="mb-4"><strong>Date:</strong> {new Date(post.date).toLocaleDateString()}</p>
               <p className="mb-4"><strong>Posted By:</strong> {post.postedBy}</p>
               {post.imgUrl && (
-                <div className="mb-4">
-                  <img src={post.imgUrl} alt="Post" className="w-full h-auto rounded-lg" />
-                </div>
-              )}
+  <div className="mb-4 flex justify-center">
+    <Image src={post.imgUrl} alt="Post" width={200} height={150} className="w-full h-auto rounded-lg" />
+  </div>
+)}
+
               <button
                 className="bg-teal-500 hover:bg-teal-700 text-white py-2 px-4 rounded mr-2"
                 onClick={() => handleUpdateClick(post)}
@@ -139,7 +141,7 @@ export default function UpdateDailyPost() {
                 />
                 {selectedPost.imgUrl && (
                   <div className="mt-4 flex justify-center">
-                    <img src={selectedPost.imgUrl} alt="Post" className="w-32 h-auto rounded-lg" />
+                    <Image src={selectedPost.imgUrl} alt="Post" width={150} height={150} className="w-32 h-auto rounded-lg" />
                   </div>
                 )}
               </div>

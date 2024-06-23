@@ -2,6 +2,8 @@ import { initializeApp, getApps } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+
+
 // Your Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -25,3 +27,4 @@ export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged };
 export const db = getFirestore(app);
+
